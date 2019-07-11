@@ -85,6 +85,7 @@ class zookeeper(
     init_limit               => $init_limit,
     sync_limit               => $sync_limit,
     log4j_file               => $log4j_file,
+    txn_log_prealloc_size    => $txn_log_prealloc_size,
   }-> class { 'zookeeper::service':
     cfg_dir           => $cfg_dir,
     restart_zookeeper => $restart_zookeeper,
