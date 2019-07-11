@@ -47,6 +47,7 @@ class zookeeper(
   $init_limit = 10,
   $sync_limit = 5,
   $restart_zookeeper = true,
+  $txn_log_prealloc_size,
 ) {
 
   validate_bool($quorum_listen_on_all_ips)

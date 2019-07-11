@@ -55,6 +55,7 @@ class zookeeper::config(
   $init_limit = 10,
   $sync_limit = 5,
   $log4j_file = undef,
+  $txn_log_prealloc_size = 65536,
 ) {
   require zookeeper::install
 
