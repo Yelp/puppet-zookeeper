@@ -81,7 +81,7 @@ class zookeeper::config(
     mode   => '0644',
   }
 
-  file { $datastore:
+  file { [$datastore, "${datastore}/version-2"]:
     ensure => directory,
     owner  => $user,
     group  => $group,
