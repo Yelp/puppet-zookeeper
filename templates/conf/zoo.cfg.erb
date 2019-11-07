@@ -74,4 +74,4 @@ quorumListenOnAllIPs=<%= scope.lookupvar('zookeeper::config::quorum_listen_on_al
 # Mark this node as an observer, if needed
 <% if scope.lookupvar('zookeeper::config::is_observer') %>
 peerType=observer
-<% end%>
+<% end %>
