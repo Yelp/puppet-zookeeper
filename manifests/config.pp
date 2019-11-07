@@ -42,6 +42,7 @@ class zookeeper::config(
   $zoo_main              = 'org.apache.zookeeper.server.quorum.QuorumPeerMain',
   $log4j_prop            = 'INFO,ROLLINGFILE',
   $servers               = [''],
+  $is_observer           = false,
   # since zookeeper 3.4, for earlier version cron task might be used
   $snap_retain_count     = 3,
   # interval in hours, purging enabled when >= 1
