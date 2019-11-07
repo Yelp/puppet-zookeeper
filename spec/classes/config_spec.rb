@@ -130,4 +130,28 @@ describe 'zookeeper::config' do
       '/etc/zookeeper/conf/zoo.cfg'
     ).with_content(/dataLogDir=\/tmp\/log/) }
   end
+
+  context 'is_observer is set to true' do
+    is_observer = true
+
+    let(:params) {{
+      :is_observer => is_observer
+    }}
+
+    it { should contain_file(
+        '/etc/zookeeper/conf/zoo.cfg'
+      ).with_content(/peerType=observer/) }
+  end
+
+  context 'is_observer is set to false' do
+    is_observer = false
+
+    let(:params) {{
+      :is_observer => is_observer
+    }}
+
+    it { should contain_file(
+        '/etc/zookeeper/conf/zoo.cfg'
+      ).without_content(/peerType=observer/) }
+  end
 end
