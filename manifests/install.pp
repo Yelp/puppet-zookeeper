@@ -23,19 +23,12 @@ class zookeeper::install(
     ensure => $ensure
   }
 
-  if $::lsbdistcodename == 'xenial' {
-      systemd::unit_file { 'zookeeper.service':
-          # enable/active => true is not required here since
-          # that also enables the automated restarted of zookeeper
-          # which we manage through service.pp and notify.
-          source  => 'puppet:///modules/zookeeper/zookeeper.service',
-          require => Package['zookeeper'],
-      }
-  } else {
-    package { ['zookeeperd']: #init.d scripts for zookeeper
-      ensure  => $ensure,
+  systemd::unit_file { 'zookeeper.service':
+      # enable/active => true is not required here since
+      # that also enables the automated restarted of zookeeper
+      # which we manage through service.pp and notify.
+      source  => 'puppet:///modules/zookeeper/zookeeper.service',
       require => Package['zookeeper'],
-    }
   }
 
   # if !$cleanup_count, then ensure this cron is absent.
