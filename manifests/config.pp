@@ -31,6 +31,7 @@ class zookeeper::config(
   $datalogstore          = undef,
   $client_port           = 2181,
   $snap_count            = 10000,
+  $global_req_limit      = 1000,
   $log_dir               = '/var/log/zookeeper',
   $cfg_dir               = '/etc/zookeeper/conf',
   $user                  = 'zookeeper',
