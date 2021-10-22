@@ -75,3 +75,11 @@ quorumListenOnAllIPs=<%= scope.lookupvar('zookeeper::config::quorum_listen_on_al
 <% if scope.lookupvar('zookeeper::config::is_observer') %>
 peerType=observer
 <% end %>
+
+# Enable prometheus metrics on port 7000 if available
+metricsProvider.className=org.apache.zookeeper.metrics.prometheus.PrometheusMetricsProvider
+metricsProvider.httpPort=7000
+metricsProvider.exportJvmInfo=true
+
+# Allow all four-letter word commands
+4lw.commands.whitelist=*

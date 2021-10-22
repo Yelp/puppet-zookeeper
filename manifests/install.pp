@@ -27,7 +27,7 @@ class zookeeper::install(
       # enable/active => true is not required here since
       # that also enables the automated restarted of zookeeper
       # which we manage through service.pp and notify.
-      source  => 'puppet:///modules/zookeeper/zookeeper.service',
+      content  => template('zookeeper/zookeeper.service.erb'),
       require => Package['zookeeper'],
   }
 

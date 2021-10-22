@@ -7,7 +7,7 @@ Wants=network.target
 User=zookeeper
 Group=zookeeper
 SyslogIdentifier=zookeeper
-ExecStart=/bin/bash -c 'source /etc/default/zookeeper && exec /usr/share/zookeeper/bin/zkServer.sh start-foreground'
+ExecStart=/bin/bash -c 'source /etc/default/zookeeper && exec /usr/share/zookeeper/bin/zkServer.sh  <% if scope.lookupvar('zookeeper::config::config_flag') %>--config <%= scope.lookupvar('zookeeper::config::cfg_dir') %><% end%> start-foreground'
 Restart=always
 # This is due to zookeeper exiting with 143 when SIGTERM is sent by init.
 SuccessExitStatus=143
