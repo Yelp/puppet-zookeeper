@@ -57,8 +57,6 @@ class zookeeper::config(
   $sync_limit = 5,
   $log4j_file = undef,
   $txn_log_prealloc_size = 65536,
-  # If true, we pass --config to zkServer.sh on startup
-  $config_flag = false,
 ) {
   require zookeeper::install
 
