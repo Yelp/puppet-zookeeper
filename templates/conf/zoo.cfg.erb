@@ -42,6 +42,9 @@ preAllocSize=<%= scope.lookupvar('zookeeper::config::txn_log_prealloc_size') %>
 # snapshot is started and a new transaction log file is started. The default
 # snapCount is 10,000.
 snapCount=<%= scope.lookupvar('zookeeper::config::snap_count') %>
+<% if scope.lookupvar('zookeeper::config::global_req_limit') %>
+globalOutstandingLimit=<%= scope.lookupvar('zookeeper::config::global_req_limit') %>
+<% end%>
 
 # If this option is defined, requests will be will logged to a trace file named
 # traceFile.year.month.day.
