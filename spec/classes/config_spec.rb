@@ -69,10 +69,12 @@ describe 'zookeeper::config' do
 
   context 'extra parameters' do
     snap_cnt = 15000
+    global_req_limit = 1100
     # set custom params
     let(:params) { {
-      :log4j_prop    => 'INFO,ROLLINGFILE',
-      :snap_count    => snap_cnt,
+      :log4j_prop       => 'INFO,ROLLINGFILE',
+      :snap_count       => snap_cnt,
+      :global_req_limit => global_req_limit,
     } }
 
     it {
@@ -81,6 +83,10 @@ describe 'zookeeper::config' do
 
     it {
       should contain_file('/etc/zookeeper/conf/zoo.cfg').with_content(/snapCount=15000/)
+    }
+
+    it {
+      should contain_file('/etc/zookeeper/conf/zoo.cfg').with_content(/globalOutstandingLimit=1100/)
     }
   end
 
