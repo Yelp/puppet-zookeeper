@@ -16,6 +16,7 @@ class zookeeper::install(
   $cleanup_sh        = '/usr/lib/zookeeper/bin/zkCleanup.sh',
   $datastore         = '/var/lib/zookeeper',
   $user              = 'zookeeper',
+  $config_init_flag  = false
 ) {
 # a debian (or other binary package) must be available, see https://github.com/deric/zookeeper-deb-packaging
 # for Debian packaging
@@ -27,7 +28,7 @@ class zookeeper::install(
       # enable/active => true is not required here since
       # that also enables the automated restarted of zookeeper
       # which we manage through service.pp and notify.
-      source  => 'puppet:///modules/zookeeper/zookeeper.service',
+      content  => template('zookeeper/zookeeper.service.erb'),
       require => Package['zookeeper'],
   }
 

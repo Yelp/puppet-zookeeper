@@ -49,9 +49,15 @@ class zookeeper(
   $sync_limit = 5,
   $restart_zookeeper = true,
   $txn_log_prealloc_size,
+  $config_init_flag = false,
 ) {
 
   validate_bool($quorum_listen_on_all_ips)
+
+  $config_init_flag_val = $config_init_flag ? {
+    true  => $cfg_dir,
+    false =>  false,
+  }
 
   anchor { 'zookeeper::start': }
   -> class { 'zookeeper::install':
@@ -60,6 +66,7 @@ class zookeeper(
     datastore         => $datastore,
     user              => $user,
     cleanup_sh        => $cleanup_sh,
+    config_init_flag  => $config_init_flag_val,
   } -> class { 'zookeeper::config':
     id                       => $id,
     datastore                => $datastore,
