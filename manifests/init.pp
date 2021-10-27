@@ -34,6 +34,7 @@ class zookeeper(
   $is_observer = false,
   $ensure      = present,
   $snap_count  = 10000,
+  $global_req_limit = 1000,
   # since zookeeper 3.4, for earlier version cron task might be used
   $snap_retain_count = 3,
   # interval in hours, purging enabled when >= 1
@@ -84,6 +85,7 @@ class zookeeper(
     servers                  => $servers,
     is_observer              => $is_observer,
     snap_count               => $snap_count,
+    global_req_limit         => $global_req_limit,
     snap_retain_count        => $snap_retain_count,
     purge_interval           => $purge_interval,
     rollingfile_threshold    => $rollingfile_threshold,
