@@ -50,7 +50,6 @@ class zookeeper(
   $sync_limit = 5,
   $restart_zookeeper = true,
   $txn_log_prealloc_size,
-  $config_init_flag = false,
   $zookeeper_minor_version = "3.4",
 ) {
 
