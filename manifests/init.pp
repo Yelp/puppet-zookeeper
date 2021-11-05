@@ -56,7 +56,7 @@ class zookeeper(
 
   validate_bool($quorum_listen_on_all_ips)
 
-  $config_init_flag_val = $zookeeper_minor_version == "3.4" ? {
+  $config_init_flag_val = ($zookeeper_minor_version == "3.4") ? {
     true  => false,
     false => $cfg_dir,
   }
