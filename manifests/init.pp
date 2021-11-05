@@ -50,14 +50,14 @@ class zookeeper(
   $sync_limit = 5,
   $restart_zookeeper = true,
   $txn_log_prealloc_size,
-  $config_init_flag = false,
+  $zookeeper_minor_version = "3.4",
 ) {
 
   validate_bool($quorum_listen_on_all_ips)
 
-  $config_init_flag_val = $config_init_flag ? {
-    true  => $cfg_dir,
-    false =>  false,
+  $config_init_flag_val = ($zookeeper_minor_version == "3.4") ? {
+    true  => false,
+    false => $cfg_dir,
   }
 
   anchor { 'zookeeper::start': }
@@ -97,6 +97,7 @@ class zookeeper(
     sync_limit               => $sync_limit,
     log4j_file               => $log4j_file,
     txn_log_prealloc_size    => $txn_log_prealloc_size,
+    zookeeper_minor_version  => $zookeeper_minor_version,
   }-> class { 'zookeeper::service':
     cfg_dir           => $cfg_dir,
     restart_zookeeper => $restart_zookeeper,

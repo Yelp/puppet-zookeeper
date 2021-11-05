@@ -58,6 +58,7 @@ class zookeeper::config(
   $sync_limit = 5,
   $log4j_file = undef,
   $txn_log_prealloc_size = 65536,
+  $zookeeper_minor_version = "3.4",
 ) {
   require zookeeper::install
 
@@ -120,7 +121,7 @@ class zookeeper::config(
     owner   => $user,
     group   => $group,
     mode    => '0644',
-    content => template('zookeeper/conf/environment.erb'),
+    content => template("zookeeper/conf/environment.${zookeeper_minor_version}.erb"),
     require => File[$cfg_dir],
   }
 
