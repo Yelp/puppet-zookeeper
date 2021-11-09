@@ -59,6 +59,8 @@ class zookeeper::config(
   $log4j_file = undef,
   $txn_log_prealloc_size = 65536,
   $zookeeper_minor_version = "3.4",
+  $local_sessions_enabled = false,
+  $local_sessions_upgrading_enabled = true,
 ) {
   require zookeeper::install
 

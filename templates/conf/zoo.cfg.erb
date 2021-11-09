@@ -86,3 +86,7 @@ metricsProvider.exportJvmInfo=true
 
 # Allow all four-letter word commands
 4lw.commands.whitelist=*
+
+# Enable local sessions to reduce session creation overhead
+localSessionsEnabled=<%= scope.lookupvar('zookeeper::config::local_sessions_enabled') %>
+localSessionsUpgradingEnabled=<%= scope.lookupvar('zookeeper::config::local_sessions_upgrading_enabled') %>
