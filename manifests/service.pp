@@ -2,12 +2,10 @@
 
 class zookeeper::service(
   $cfg_dir = '/etc/zookeeper/conf',
-  $restart_zookeeper = true,
+  Boolean $restart_zookeeper = true,
 ){
   require zookeeper::install
   require zookeeper::config
-  validate_bool($restart_zookeeper)
-
 
   service { 'zookeeper':
     ensure     => 'running',

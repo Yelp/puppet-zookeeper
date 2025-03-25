@@ -56,7 +56,7 @@ class zookeeper::config(
   $tick_time = 2000,
   $init_limit = 10,
   $sync_limit = 5,
-  $log4j_file = undef,
+  Stdlib::Absolutepath $log4j_file = undef,
   $txn_log_prealloc_size = 65536,
   $zookeeper_minor_version = "3.4",
   $local_sessions_enabled = false,
@@ -65,7 +65,6 @@ class zookeeper::config(
   require zookeeper::install
 
   if $log4j_file {
-    validate_absolute_path($log4j_file)
     if $log4j_file == "${cfg_dir}/log4j.properties" {
         fail('log4j_file should not be same as ' + "${cfg_dir}/log4j.properties")
     }
