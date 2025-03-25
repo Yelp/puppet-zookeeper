@@ -44,19 +44,17 @@ class zookeeper(
   $rollingfile_threshold = 'ERROR',
   $tracefile_threshold    = 'TRACE',
   $max_allowed_connections = 10,
-  $quorum_listen_on_all_ips = true,
+  Boolean $quorum_listen_on_all_ips = true,
   $tick_time = 2000,
   $init_limit = 10,
   $sync_limit = 5,
-  $restart_zookeeper = true,
+  Boolean $restart_zookeeper = true,
   $txn_log_prealloc_size,
   $zookeeper_minor_version = "3.4",
-  $local_sessions_enabled = false,
-  $local_sessions_upgrading_enabled = true,
+  Boolean $local_sessions_enabled = false,
+  Boolean $local_sessions_upgrading_enabled = true,
 
 ) {
-
-  validate_bool($quorum_listen_on_all_ips)
 
   $config_init_flag_val = ($zookeeper_minor_version == "3.4") ? {
     true  => false,
