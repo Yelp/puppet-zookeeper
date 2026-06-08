@@ -1,0 +1,14 @@
+NAME=zookeeper
+ZOOCFGDIR=<%= scope.lookupvar('zookeeper::config::cfg_dir') %>
+
+ZOOCFG="zoo.cfg"
+ZOO_LOG_DIR=<%= scope.lookupvar('zookeeper::config::log_dir') %>
+USER=<%= scope.lookupvar('zookeeper::config::user') %>
+GROUP=<%= scope.lookupvar('zookeeper::config::group') %>
+PIDDIR=<%= scope.lookupvar('zookeeper::config::pid_dir') %>
+PIDFILE=<%= scope.lookupvar('zookeeper::config::pid_file') %>
+SCRIPTNAME=/etc/init.d/$NAME
+JAVA=<%= scope.lookupvar('zookeeper::config::java_bin') %>
+ZOOMAIN="<%= scope.lookupvar('zookeeper::config::zoo_main') %>"
+JMXLOCALONLY=false
+JAVA_OPTS="<%= scope.lookupvar('zookeeper::config::java_opts') %>"
